@@ -30,7 +30,7 @@ app.use(
 // app.get('/', (req, res) => {
 //   res.send('API em execucao');
 // });
-app.get('/', gradeRouter);
+app.use('/', gradeRouter);
 
 app.listen(process.env.PORT || 8081, () => {
   console.log('Backend started');
