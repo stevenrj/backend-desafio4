@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import { db } from './models/index.js';
+import { gradeRouter } from './routes/gradeRouter.js';
 
 (async () => {
   try {
@@ -21,14 +22,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
-  cors({
-    origin: 'http://localhost:8080',
-  })
+  cors()
 );
-
-app.get('/', (req, res) => {
-  res.send('API em execucao');
-});
+// {
+//   origin: 'http://localhost:8080',
+// }
+// app.get('/', (req, res) => {
+//   res.send('API em execucao');
+// });
+app.get('/', gradeRouter);
 
 app.listen(process.env.PORT || 8081, () => {
   console.log('Backend started');
